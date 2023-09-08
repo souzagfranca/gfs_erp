@@ -41,8 +41,8 @@ class CategoriaController extends Controller
     public function salvar()
     {
         $tb_categoria = new \stdClass();
-        $tb_categoria->id_categoria = $_POST["id_categoria"];
-        $tb_categoria->categoria    = $_POST['categoria'];
+        $tb_categoria->id_categoria   = $_POST["id_categoria"];
+        $tb_categoria->desc_categoria = $_POST['desc_categoria'];
 
         Flash::setForm($tb_categoria);
         if (CategoriaService::salvar($tb_categoria, $this->campo, $this->tabela)) {

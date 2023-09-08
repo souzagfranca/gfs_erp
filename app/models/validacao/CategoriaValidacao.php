@@ -7,10 +7,10 @@ class CategoriaValidacao{
     public static function salvar($tb_categoria){
         $validacao = new Validacao();
         
-        $validacao->setData("categoria", $tb_categoria->categoria);
+        $validacao->setData("desc_categoria", $tb_categoria->desc_categoria);
         
         //fazendo a validação
-        $validacao->getData("categoria")->isVazio();
+        $validacao->getData("desc_categoria")->isVazio();
         
         return $validacao;
         

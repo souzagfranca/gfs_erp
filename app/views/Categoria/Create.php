@@ -14,7 +14,7 @@
         <div class="border radius-4 mt-5 px-4">
             <div class="col-12 mb-3 mt-5">
                 <label class="text-label">Categoria</label>
-                <input type="text" name="categoria" value="<?php echo ($tb_categoria->categoria) ? $tb_categoria->categoria : null ?>" class="form-campo" placeholder="Digite o nome da categoria">
+                <input type="text" name="desc_categoria" value="<?php echo ($tb_categoria->desc_categoria) ? $tb_categoria->desc_categoria : null ?>" class="form-campo" placeholder="Digite o nome da categoria">
             </div>
             <div class="col-12 mt-3 mb-5">
                 <input type="hidden" name="id_categoria" value="<?php echo ($tb_categoria->id_categoria) ? $tb_categoria->id_categoria : null ?>">

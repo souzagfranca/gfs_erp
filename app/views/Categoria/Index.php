@@ -51,7 +51,7 @@
                         <?php foreach ($lista as $tb_categoria) { ?>
                             <tr>
                                 <td align="center"><?php echo $tb_categoria->id_categoria ?></td>
-                                <td align="center"><?php echo $tb_categoria->categoria ?></td>
+                                <td align="center"><?php echo $tb_categoria->desc_categoria ?></td>
 
                                 <td align="center"><a href="<?php echo URL_BASE ."categoria/edit/" .$tb_categoria->id_categoria ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno"><i class="fas fa-edit"></i> Editar</a> </td>
                                 <td align="center"><a href="javascript:;" onclick="return excluir(this)" data-entidade="categoria" data-id="<?php echo $tb_categoria->id_categoria ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a> </td>
