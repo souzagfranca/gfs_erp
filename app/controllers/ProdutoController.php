@@ -28,41 +28,41 @@ class ProdutoController extends Controller
         $this->load("template", $dados);
     }
 
-    public function edit($id)
+    public function edit($IdProduto)
     {
-        $tb_produto = Service::get($this->tabela, $this->campo, $id);
-        if (!$tb_produto) {
+        $DadosProduto = Service::get($this->tabela, $this->campo, $IdProduto);
+        if (!$DadosProduto) {
             $this->redirect(URL_BASE . "produto");
         }
-        $dados["categorias"] = Service::lista("tb_categoria");
-        $dados["unidades"]   = Service::lista("tb_unidade_medida");
-        $dados["tb_produto"] = $tb_produto;
-        $dados["view"]       = "Produto/Create";
+        $dados["categorias"]   = Service::lista("tb_categoria");
+        $dados["unidades"]     = Service::lista("tb_unidade_medida");
+        $dados["DadosProduto"] = $DadosProduto;
+        $dados["view"]         = "Produto/Create";
         $this->load("template", $dados);
     }
 
     public function salvar()
     {
-        $tb_produto = new \stdClass();
-        $tb_produto->id_produto     = $_POST["id_produto"];
-        $tb_produto->desc_produto   = $_POST['desc_produto'];
-        $tb_produto->id_categoria   = $_POST['id_categoria'];
-        $tb_produto->id_unidade     = $_POST['id_unidade'];
-        $tb_produto->vr_venda       = $_POST['vr_venda'];
-        $tb_produto->eh_produto     = $_POST['eh_produto'];
-        $tb_produto->eh_insumo      = $_POST['eh_insumo'];
-        $tb_produto->eh_promocao    = $_POST['eh_promocao'];
-        $tb_produto->eh_maisvendido = $_POST['eh_maisvendido'];
-        $tb_produto->eh_lancamento  = $_POST['eh_lancamento'];
+        $DadosProduto = new \stdClass();
+        $DadosProduto->id_produto     = $_POST["id_produto"];
+        $DadosProduto->desc_produto   = $_POST['desc_produto'];
+        $DadosProduto->id_categoria   = $_POST['id_categoria'];
+        $DadosProduto->id_unidade     = $_POST['id_unidade'];
+        $DadosProduto->vr_venda       = $_POST['vr_venda'];
+        $DadosProduto->eh_produto     = $_POST['eh_produto'];
+        $DadosProduto->eh_insumo      = $_POST['eh_insumo'];
+        $DadosProduto->eh_promocao    = $_POST['eh_promocao'];
+        $DadosProduto->eh_maisvendido = $_POST['eh_maisvendido'];
+        $DadosProduto->eh_lancamento  = $_POST['eh_lancamento'];
 
-        Flash::setForm($tb_produto);
-        if (ProdutoService::salvar($tb_produto, $this->campo, $this->tabela)) {
+        Flash::setForm($DadosProduto);
+        if (ProdutoService::salvar($DadosProduto, $this->campo, $this->tabela)) {
             $this->redirect(URL_BASE . "produto");
         } else {
-            if (!$tb_produto->id_produto) {
+            if (!$DadosProduto->id_produto) {
                 $this->redirect(URL_BASE . "produto/create");
             } else {
-                $this->redirect(URL_BASE . "produto/edit/" . $tb_produto->id_produto);
+                $this->redirect(URL_BASE . "produto/edit/" . $DadosProduto->id_produto);
             }
         }
     }

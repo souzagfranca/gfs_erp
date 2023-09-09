@@ -19,7 +19,7 @@
                         <div class="rows">
                             <div class="col-8">
                                 <label class="text-label d-block text-branco">Local de estoque</label>
-                                <input type="text" name="local_estoque" value="<?php echo ($tb_local_estoque->local_estoque) ? $tb_local_estoque->local_estoque : null ?>" class="form-campo">
+                                <input type="text" name="local_estoque" value="<?php echo ($DadosLocalEstoque->local_estoque) ? $DadosLocalEstoque->local_estoque : null ?>" class="form-campo">
                             </div>
                             <div class="col-2">
                                 <label class="text-label d-block text-branco">Depósito</label>
@@ -29,8 +29,8 @@
                                 </select>
                             </div>
                             <div class="col-2 mt-1 pt-1">
-                                <input type="hidden" name="id_local_estoque" value="<?php echo ($tb_local_estoque->id_local_estoque) ? $tb_local_estoque->id_local_estoque : null ?>">
-                                <input type="submit" value="<?php echo ($tb_local_estoque->id_local_estoque) ? "Editar" : "Inserir" ?>" class="btn btn-verde text-uppercase width-100">
+                                <input type="hidden" name="id_local_estoque" value="<?php echo ($DadosLocalEstoque->id_local_estoque) ? $DadosLocalEstoque->id_local_estoque : null ?>">
+                                <input type="submit" value="<?php echo ($DadosLocalEstoque->id_local_estoque) ? "Editar" : "Inserir" ?>" class="btn btn-verde text-uppercase width-100">
                             </div>
                         </div>
                     </div>
@@ -53,13 +53,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($lista as $tb_local_estoque) { ?>
+                        <?php foreach ($lista as $DadosLocalEstoque) { ?>
                             <tr>
-                                <td align="center"><?php echo $tb_local_estoque->id_local_estoque ?></td>
-                                <td align="center"><?php echo $tb_local_estoque->local_estoque ?></td>
-                                <td align="center"><?php echo $tb_local_estoque->deposito ?></td>
-                                <td align="center"><a href="<?php echo URL_BASE . "localestoque/edit/" . $tb_local_estoque->id_local_estoque ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno"><i class="fas fa-edit"></i> Editar</a> </td>
-                                <td align="center"><a href="javascript:;" onclick="return excluir(this)" data-entidade="localestoque" data-id="<?php echo $tb_local_estoque->id_local_estoque ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a></td>
+                                <td align="center"><?php echo $DadosLocalEstoque->id_local_estoque ?></td>
+                                <td align="center"><?php echo $DadosLocalEstoque->local_estoque ?></td>
+                                <td align="center"><?php echo $DadosLocalEstoque->deposito ?></td>
+                                <td align="center"><a href="<?php echo URL_BASE . "localestoque/edit/" . $DadosLocalEstoque->id_local_estoque ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno"><i class="fas fa-edit"></i> Editar</a> </td>
+                                <td align="center"><a href="javascript:;" onclick="return excluir(this)" data-entidade="localestoque" data-id="<?php echo $DadosLocalEstoque->id_local_estoque ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a></td>
                             </tr>
                         <?php } ?>
                     </tbody>

@@ -6,9 +6,9 @@ use app\models\validacao\PessoaValidacao;
 
 class PessoaService
 {
-    public static function salvar($tb_pessoa, $campo, $tabela)
+    public static function salvar($DadosPessoa, $campo, $tabela)
     {
-        $validacao = PessoaValidacao::salvar($tb_pessoa);
-        return Service::salvar($tb_pessoa, $campo, $validacao->listaErros(), $tabela);
+        $validacao = PessoaValidacao::salvar($DadosPessoa);
+        return Service::salvar($DadosPessoa, $campo, $validacao->listaErros(), $tabela);
     }
 }

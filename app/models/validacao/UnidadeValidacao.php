@@ -6,11 +6,11 @@ use app\core\Validacao;
 
 class UnidadeValidacao
 {
-    public static function salvar($tb_unidade_medida)
+    public static function salvar($CampoData)
     {
         $validacao = new Validacao();
 
-        $validacao->setData("unidade", $tb_unidade_medida->unidade);
+        $validacao->setData("unidade", $CampoData->unidade);
 
         //fazendo a validação
         $validacao->getData("unidade")->isVazio();

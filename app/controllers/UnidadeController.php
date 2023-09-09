@@ -26,32 +26,32 @@ class UnidadeController extends Controller
         $this->load("template", $dados);
     }
 
-    public function edit($id)
+    public function edit($IdUnidadeMedida)
     {
-        $tb_unidade_medida = Service::get($this->tabela, $this->campo, $id);
-        if (!$tb_unidade_medida) {
+        $CampoData = Service::get($this->tabela, $this->campo, $IdUnidadeMedida);
+        if (!$CampoData) {
             $this->redirect(URL_BASE . "unidade");
         }
 
-        $dados["tb_unidade_medida"] = $tb_unidade_medida;
+        $dados["CampoData"] = $CampoData;
         $dados["view"]              = "Unidade/Create";
         $this->load("template", $dados);
     }
 
     public function salvar()
     {
-        $tb_unidade_medida = new \stdClass();
-        $tb_unidade_medida->id_unidade = $_POST["id_unidade"];
-        $tb_unidade_medida->unidade    = $_POST['unidade'];
+        $CampoData = new \stdClass();
+        $CampoData->id_unidade = $_POST["id_unidade"];
+        $CampoData->unidade    = $_POST['unidade'];
 
-        Flash::setForm($tb_unidade_medida);
-        if (UnidadeService::salvar($tb_unidade_medida, $this->campo, $this->tabela)) {
+        Flash::setForm($CampoData);
+        if (UnidadeService::salvar($CampoData, $this->campo, $this->tabela)) {
             $this->redirect(URL_BASE . "unidade");
         } else {
-            if (!$tb_unidade_medida->id_unidade) {
+            if (!$CampoData->id_unidade) {
                 $this->redirect(URL_BASE . "unidade/create");
             } else {
-                $this->redirect(URL_BASE . "unidade/edit/" . $tb_unidade_medida->id_unidade);
+                $this->redirect(URL_BASE . "unidade/edit/" . $CampoData->id_unidade);
             }
         }
     }

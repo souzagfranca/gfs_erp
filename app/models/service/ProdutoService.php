@@ -7,10 +7,10 @@ use app\models\validacao\ProdutoValidacao;
 
 class ProdutoService
 {
-    public static function salvar($tb_produto, $campo, $tabela)
+    public static function salvar($DadosProduto, $campo, $tabela)
     {
-        $validacao = ProdutoValidacao::salvar($tb_produto);
-        return Service::salvar($tb_produto, $campo, $validacao->listaErros(), $tabela);
+        $validacao = ProdutoValidacao::salvar($DadosProduto);
+        return Service::salvar($DadosProduto, $campo, $validacao->listaErros(), $tabela);
     }
 
     public static function atualizaEstoque($id_produto, $quantidade)

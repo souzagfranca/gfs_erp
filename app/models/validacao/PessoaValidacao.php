@@ -7,26 +7,26 @@ use app\models\service\Service;
 
 class PessoaValidacao
 {
-    public static function salvar($tb_pessoa)
+    public static function salvar($DadosPessoa)
     {
         $validacao = new Validacao();
 
-        $validacao->setData("nome", $tb_pessoa->nome);
-        $validacao->setData("eh_cliente", $tb_pessoa->eh_cliente);
-        $validacao->setData("celular", $tb_pessoa->celular);
-        $validacao->setData("email", $tb_pessoa->email);
-        $validacao->setData("senha", $tb_pessoa->senha);
-        $validacao->setData("cep", $tb_pessoa->cep);
-        $validacao->setData("logradouro", $tb_pessoa->logradouro);
-        $validacao->setData("numero", $tb_pessoa->numero);
-        $validacao->setData("uf", $tb_pessoa->uf);
-        $validacao->setData("cidade", $tb_pessoa->cidade);
-        $validacao->setData("bairro", $tb_pessoa->bairro);
-        $validacao->setData("cpf", $tb_pessoa->cpf);
-        $validacao->setData("cnpj", $tb_pessoa->cnpj);
+        $validacao->setData("razao_social", $DadosPessoa->razao_social);
+        $validacao->setData("eh_cliente", $DadosPessoa->eh_cliente);
+        $validacao->setData("celular", $DadosPessoa->celular);
+        $validacao->setData("email", $DadosPessoa->email);
+        $validacao->setData("senha", $DadosPessoa->senha);
+        $validacao->setData("cep", $DadosPessoa->cep);
+        $validacao->setData("logradouro", $DadosPessoa->logradouro);
+        $validacao->setData("numero", $DadosPessoa->numero);
+        $validacao->setData("uf", $DadosPessoa->uf);
+        $validacao->setData("cidade", $DadosPessoa->cidade);
+        $validacao->setData("bairro", $DadosPessoa->bairro);
+        $validacao->setData("cpf", $DadosPessoa->cpf);
+        $validacao->setData("cnpj", $DadosPessoa->cnpj);
 
         //fazendo a validação
-        $validacao->getData("nome")->isVazio()->isMinimo(5);
+        $validacao->getData("razao_social")->isVazio()->isMinimo(5);
         $validacao->getData("celular")->isVazio();
         $validacao->getData("email")->isVazio()->isEmail();
         $validacao->getData("senha")->isVazio();
@@ -37,21 +37,21 @@ class PessoaValidacao
         $validacao->getData("cidade")->isVazio();
         $validacao->getData("bairro")->isVazio();
 
-        if (!$tb_pessoa->eh_cliente && !$tb_pessoa->eh_fornecedor && !$tb_pessoa->eh_transportador) {
+        if (!$DadosPessoa->eh_cliente && !$DadosPessoa->eh_fornecedor && !$DadosPessoa->eh_transportador) {
             $validacao->getData("eh_cliente")->isVazio("Favor definir o tipo de cadastro: cliente, fornecedor ou transportador.");
         }
 
-        if ($tb_pessoa->cpf) {
+        if ($DadosPessoa->cpf) {
             $validacao->getData("cpf")->isCPF();
         }
 
-        if ($tb_pessoa->cnpj) {
+        if ($DadosPessoa->cnpj) {
             $validacao->getData("cnpj")->isCNPJ();
         }
 
-        if ($tb_pessoa->email) {
-            $tem = Service::get("tb_pessoa", "email", $tb_pessoa->email);
-            if ($tem && $tem->id_pessoa != $tb_pessoa->id_pessoa) {
+        if ($DadosPessoa->email) {
+            $tem = Service::get("tb_pessoa", "email", $DadosPessoa->email);
+            if ($tem && $tem->id_pessoa != $DadosPessoa->id_pessoa) {
                 $validacao->getData("email")->isUnico(1);
             }
         }

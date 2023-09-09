@@ -26,39 +26,39 @@ class CategoriaController extends Controller
         $this->load("template", $dados);
     }
 
-    public function edit($id)
+    public function edit($IdCategoria)
     {
-        $tb_categoria = Service::get($this->tabela, $this->campo, $id);
-        if (!$tb_categoria) {
+        $CampoData = Service::get($this->tabela, $this->campo, $IdCategoria);
+        if (!$CampoData) {
             $this->redirect(URL_BASE . "categoria");
         }
 
-        $dados["tb_categoria"] = $tb_categoria;
-        $dados["view"]         = "Categoria/Create";
+        $dados["CampoData"] = $CampoData;
+        $dados["view"]      = "Categoria/Create";
         $this->load("template", $dados);
     }
 
     public function salvar()
     {
-        $tb_categoria = new \stdClass();
-        $tb_categoria->id_categoria   = $_POST["id_categoria"];
-        $tb_categoria->desc_categoria = $_POST['desc_categoria'];
+        $CampoData = new \stdClass();
+        $CampoData->id_categoria   = $_POST["id_categoria"];
+        $CampoData->desc_categoria = $_POST['desc_categoria'];
 
-        Flash::setForm($tb_categoria);
-        if (CategoriaService::salvar($tb_categoria, $this->campo, $this->tabela)) {
+        Flash::setForm($CampoData);
+        if (CategoriaService::salvar($CampoData, $this->campo, $this->tabela)) {
             $this->redirect(URL_BASE . "categoria");
         } else {
-            if (!$tb_categoria->id_categoria) {
+            if (!$CampoData->id_categoria) {
                 $this->redirect(URL_BASE . "categoria/create");
             } else {
-                $this->redirect(URL_BASE . "categoria/edit/" . $tb_categoria->id_categoria);
+                $this->redirect(URL_BASE . "categoria/edit/" . $CampoData->id_categoria);
             }
         }
     }
 
-    public function excluir($id)
+    public function excluir($IdCategoria)
     {
-        Service::excluir($this->tabela, $this->campo, $id);
+        Service::excluir($this->tabela, $this->campo, $IdCategoria);
         $this->redirect(URL_BASE . "categoria");
     }
 }

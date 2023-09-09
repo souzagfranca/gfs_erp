@@ -6,9 +6,9 @@ use app\models\validacao\UnidadeValidacao;
 
 class UnidadeService
 {
-    public static function salvar($tb_unidade_medida, $campo, $tabela)
+    public static function salvar($CampoData, $campo, $tabela)
     {
-        $validacao = UnidadeValidacao::salvar($tb_unidade_medida);
-        return Service::salvar($tb_unidade_medida, $campo, $validacao->listaErros(), $tabela);
+        $validacao = UnidadeValidacao::salvar($CampoData);
+        return Service::salvar($CampoData, $campo, $validacao->listaErros(), $tabela);
     }
 }

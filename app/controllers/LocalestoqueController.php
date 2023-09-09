@@ -22,38 +22,38 @@ class LocalestoqueController extends Controller{
         $this->load("template", $dados);
     }
     
-    public function edit($id){
-        $tb_local_estoque = Service::get($this->tabela, $this->campo, $id);       
-        if(!$tb_local_estoque){
+    public function edit($IdLocalEstoque){
+        $DadosLocalEstoque = Service::get($this->tabela, $this->campo, $IdLocalEstoque);       
+        if(!$DadosLocalEstoque){
             $this->redirect(URL_BASE."localestoque");
         }
         
-        $dados["lista"] = Service::lista($this->tabela); 
-        $dados["tb_local_estoque"]   = $tb_local_estoque;
-        $dados["view"]      = "LocalEstoque/Create";
+        $dados["lista"]             = Service::lista($this->tabela); 
+        $dados["DadosLocalEstoque"] = $DadosLocalEstoque;
+        $dados["view"]              = "LocalEstoque/Create";
         $this->load("template", $dados);
     }
     
     public function salvar(){
-        $tb_local_estoque = new \stdClass();
-        $tb_local_estoque->id_local_estoque        = $_POST["id_local_estoque"];
-        $tb_local_estoque->local_estoque 		    = $_POST['local_estoque'];
-        $tb_local_estoque->deposito 		        = $_POST['deposito'];
+        $DadosLocalEstoque = new \stdClass();
+        $DadosLocalEstoque->id_local_estoque        = $_POST["id_local_estoque"];
+        $DadosLocalEstoque->local_estoque 		    = $_POST['local_estoque'];
+        $DadosLocalEstoque->deposito 		        = $_POST['deposito'];
         
-        Flash::setForm($tb_local_estoque);
-        if(LocalEstoqueService::salvar($tb_local_estoque, $this->campo, $this->tabela)){
+        Flash::setForm($DadosLocalEstoque);
+        if(LocalEstoqueService::salvar($DadosLocalEstoque, $this->campo, $this->tabela)){
             $this->redirect(URL_BASE."localestoque");
         }else{
-            if(!$tb_local_estoque->id_local_estoque){
+            if(!$DadosLocalEstoque->id_local_estoque){
                 $this->redirect(URL_BASE."localestoque/create");
             }else{
-                $this->redirect(URL_BASE."localestoque/edit/".$tb_local_estoque->id_local_estoque);
+                $this->redirect(URL_BASE."localestoque/edit/".$DadosLocalEstoque->id_local_estoque);
             }
         }
     }
     
-    public function excluir($id){
-        Service::excluir($this->tabela, $this->campo, $id);
+    public function excluir($IdLocalEstoque){
+        Service::excluir($this->tabela, $this->campo, $IdLocalEstoque);
         $this->redirect(URL_BASE."localestoque");
     }
 }

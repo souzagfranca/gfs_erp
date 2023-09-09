@@ -55,20 +55,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($lista as $tb_produto) {
-                            $imagem = ($tb_produto->imagem) ? $tb_produto->imagem : "semproduto.png";
+                        <?php foreach ($lista as $DadosProduto) {
+                            $imagem = ($DadosProduto->imagem) ? $DadosProduto->imagem : "semproduto.png";
                         ?>
                             <tr>
-                                <td align="center"><?php echo $tb_produto->id_produto ?></td>
+                                <td align="center"><?php echo $DadosProduto->id_produto ?></td>
                                 <td align="center"><img src="<?php echo URL_IMAGEM . $imagem ?>" class="img-fluido"></td>
-                                <td align="center"><?php echo $tb_produto->desc_produto ?></td>
-                                <td align="center"><?php echo $tb_produto->vr_venda ?></td>
-                                <td align="center"><?php echo $tb_produto->estoque_atual ?></td>
+                                <td align="center"><?php echo $DadosProduto->desc_produto ?></td>
+                                <td align="center"><?php echo $DadosProduto->vr_venda ?></td>
+                                <td align="center"><?php echo $DadosProduto->estoque_atual ?></td>
                                 <td align="center">
-                                    <a href="<?php echo URL_BASE . "produto/edit/" . $tb_produto->id_produto ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno img-fluido"><i class="fas fa-edit"></i> Editar</a>
+                                    <a href="<?php echo URL_BASE . "produto/edit/" . $DadosProduto->id_produto ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno img-fluido"><i class="fas fa-edit"></i> Editar</a>
                                 </td>
                                 <td align="center">
-                                    <a href="javascript:;" onclick="return excluir(this)" data-entidade="produto" data-id="<?php echo $tb_produto->id_produto ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a>
+                                    <a href="javascript:;" onclick="return excluir(this)" data-entidade="produto" data-id="<?php echo $DadosProduto->id_produto ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a>
                                 </td>
                             </tr>
                         <?php } ?>

@@ -15,7 +15,7 @@
                         <div class="rows">
                             <div class="col-8">
                                 <label class="text-label d-block text-branco">Nome </label>
-                                <input type="text" name="categoria" value="" class="form-campo">
+                                <input type="text" name="desc_categoria" value="" class="form-campo">
                             </div>
                             <div class="col-2">
                                 <label class="text-label d-block text-branco">Ativo </label>
@@ -48,13 +48,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($lista as $tb_categoria) { ?>
+                        <?php foreach ($lista as $CampoData) { ?>
                             <tr>
-                                <td align="center"><?php echo $tb_categoria->id_categoria ?></td>
-                                <td align="center"><?php echo $tb_categoria->desc_categoria ?></td>
+                                <td align="center"><?php echo $CampoData->id_categoria ?></td>
+                                <td align="center"><?php echo $CampoData->desc_categoria ?></td>
 
-                                <td align="center"><a href="<?php echo URL_BASE ."categoria/edit/" .$tb_categoria->id_categoria ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno"><i class="fas fa-edit"></i> Editar</a> </td>
-                                <td align="center"><a href="javascript:;" onclick="return excluir(this)" data-entidade="categoria" data-id="<?php echo $tb_categoria->id_categoria ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a> </td>
+                                <td align="center"><a href="<?php echo URL_BASE . "categoria/edit/" . $CampoData->id_categoria ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno"><i class="fas fa-edit"></i> Editar</a> </td>
+                                <td align="center"><a href="javascript:;" onclick="return excluir(this)" data-entidade="categoria" data-id="<?php echo $CampoData->id_categoria ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a> </td>
                             </tr>
                         <?php } ?>
                     </tbody>

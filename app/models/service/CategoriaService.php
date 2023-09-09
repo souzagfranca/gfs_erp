@@ -6,9 +6,9 @@ use app\models\validacao\CategoriaValidacao;
 
 class CategoriaService
 {
-    public static function salvar($tb_categoria, $campo, $tabela)
+    public static function salvar($CampoData, $campo, $tabela)
     {
-        $validacao = CategoriaValidacao::salvar($tb_categoria);
-        return Service::salvar($tb_categoria, $campo, $validacao->listaErros(), $tabela);
+        $validacao = CategoriaValidacao::salvar($CampoData);
+        return Service::salvar($CampoData, $campo, $validacao->listaErros(), $tabela);
     }
 }

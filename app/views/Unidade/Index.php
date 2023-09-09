@@ -48,13 +48,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($lista as $tb_unidade_medida) { ?>
+                        <?php foreach ($lista as $CampoData) { ?>
                             <tr>
-                                <td align="center"><?php echo $tb_unidade_medida->id_unidade ?></td>
-                                <td align="center"><?php echo $tb_unidade_medida->unidade ?></td>
+                                <td align="center"><?php echo $CampoData->id_unidade ?></td>
+                                <td align="center"><?php echo $CampoData->unidade ?></td>
 
-                                <td align="center"><a href="<?php echo URL_BASE ."unidade/edit/" .$tb_unidade_medida->id_unidade ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno"><i class="fas fa-edit"></i> Editar</a> </td>
-                                <td align="center"><a href="javascript:;" onclick="return excluir(this)" data-entidade="unidade" data-id="<?php echo $tb_unidade_medida->id_unidade ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a> </td>
+                                <td align="center"><a href="<?php echo URL_BASE ."unidade/edit/" .$CampoData->id_unidade ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno"><i class="fas fa-edit"></i> Editar</a> </td>
+                                <td align="center"><a href="javascript:;" onclick="return excluir(this)" data-entidade="unidade" data-id="<?php echo $CampoData->id_unidade ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a> </td>
                             </tr>
                         <?php } ?>
                     </tbody>

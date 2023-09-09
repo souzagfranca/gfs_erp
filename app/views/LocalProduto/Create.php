@@ -21,9 +21,9 @@
                                 <label class="text-label d-block text-branco">Produto</label>
                                 <select class="form-campo" name="id_produto">
                                     <option>Selecione o produto</option>
-                                    <?php foreach ($produtos as $produto) {
-                                        $selecionado = ($produto->id_produto == $tb_local_produto->id_produto) ? "selected" : "";
-                                        echo "<option value='$produto->id_produto' $selecionado>$produto->produto</option>";
+                                    <?php foreach ($produtos as $DadosProduto) {
+                                        $selecionado = ($DadosProduto->id_produto == $DadosLocalProduto->id_produto) ? "selected" : "";
+                                        echo "<option value='$DadosProduto->id_produto' $selecionado>$DadosProduto->desc_produto</option>";
                                     ?>
                                     <?php } ?>
                                 </select>
@@ -32,22 +32,22 @@
                                 <label class="text-label d-block text-branco">Local de Estoque</label>
                                 <select class="form-campo" name="id_local_estoque">
                                     <option>Selecione o local</option>
-                                    <?php foreach ($locais as $tb_local_estoque) {
-                                        $selecionado = ($tb_local_estoque->id_local_estoque == $tb_local_produto->id_local_estoque) ? "selected" : "";
-                                        echo "<option value='$tb_local_estoque->id_local_estoque' $selecionado>$tb_local_estoque->local_estoque</option>";
+                                    <?php foreach ($locais as $DadosLocalEstoque) {
+                                        $selecionado = ($DadosLocalEstoque->id_local_estoque == $DadosLocalProduto->id_local_estoque) ? "selected" : "";
+                                        echo "<option value='$DadosLocalEstoque->id_local_estoque' $selecionado>$DadosLocalEstoque->local_estoque</option>";
                                     ?>
                                     <?php } ?>
                                 </select>
                             </div>
                             <div class="col-2">
-                                <label class="text-label d-block text-branco">Em massa</label>
+                                <label class="text-label d-block text-branco">Inserir em lote?</label>
                                 <select class="form-campo" name="em_massa">
                                     <option value="N">Não</option>
                                     <option value="S">Sim</option>
                                 </select>
                             </div>
                             <div class="col-2">
-                                <label class="text-label d-block text-branco">Tipo</label>
+                                <label class="text-label d-block text-branco">Quais tipos?</label>
                                 <select class="form-campo" name="tipo">
                                     <option>Selecione</option>
                                     <option value="">Todos</option>
@@ -57,8 +57,8 @@
                             </div>
 
                             <div class="col-2 mt-1 pt-1">
-                                <input type="hidden" name="id_local_produto" value="<?php echo ($tb_local_produto->id_local_produto) ? $tb_local_produto->id_local_produto : null ?>">
-                                <input type="submit" value="<?php echo ($tb_local_produto->id_local_produto) ? "Editar" : "Inserir" ?>" class="btn btn-verde text-uppercase width-100">
+                                <input type="hidden" name="id_local_produto" value="<?php echo ($DadosLocalProduto->id_local_produto) ? $DadosLocalProduto->id_local_produto : null ?>">
+                                <input type="submit" value="<?php echo ($DadosLocalProduto->id_local_produto) ? "Editar" : "Inserir" ?>" class="btn btn-verde text-uppercase width-100">
                             </div>
                         </div>
                     </div>

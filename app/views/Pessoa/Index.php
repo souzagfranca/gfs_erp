@@ -61,17 +61,17 @@
                     </thead>
 
                     <tbody>
-                        <?php foreach ($lista as $tb_pessoa) { ?>
+                        <?php foreach ($lista as $DadosPessoa) { ?>
                             <tr>
-                                <td align="center"><?php echo $tb_pessoa->id_pessoa ?></td>
-                                <td align="center"><?php echo $tb_pessoa->nome ?></td>
-                                <td align="center"><?php echo $tb_pessoa->email ?></td>
-                                <td align="center" class="mascara-celular"><?php echo $tb_pessoa->celular ?></td>
+                                <td align="center"><?php echo $DadosPessoa->id_pessoa ?></td>
+                                <td align="center"><?php echo $DadosPessoa->razao_social ?></td>
+                                <td align="center"><?php echo $DadosPessoa->email ?></td>
+                                <td align="center" class="mascara-celular"><?php echo $DadosPessoa->celular ?></td>
                                 <td align="center">
-                                    <a href="<?php echo URL_BASE . "pessoa/edit/" . $tb_pessoa->id_pessoa ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno"><i class="fas fa-edit"></i> Editar</a>
+                                    <a href="<?php echo URL_BASE . "pessoa/edit/" . $DadosPessoa->id_pessoa ?>" class="d-inline-block btn btn-outline-roxo btn-pequeno"><i class="fas fa-edit"></i> Editar</a>
                                 </td>
                                 <td align="center">
-                                    <a href="javascript:;" onclick="return excluir(this)" data-entidade="pessoa" data-id="<?php echo $tb_pessoa->id_pessoa ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a>
+                                    <a href="javascript:;" onclick="return excluir(this)" data-entidade="pessoa" data-id="<?php echo $DadosPessoa->id_pessoa ?>" class="d-inline-block btn btn-outline-vermelho btn-pequeno"><i class="fas fa-trash-alt"></i> Excluir</a>
                                 </td>
                             </tr>
                         <?php } ?>

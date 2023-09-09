@@ -31,51 +31,51 @@ class LocalprodutoController extends Controller
         $this->load("template", $dados);
     }
 
-    public function edit($id)
+    public function edit($IdLocalProduto)
     {
-        $tb_local_produto = Service::get($this->tabela, $this->campo, $id);
-        if (!$tb_local_produto) {
+        $DadosLocalProduto = Service::get($this->tabela, $this->campo, $IdLocalProduto);
+        if (!$DadosLocalProduto) {
             $this->redirect(URL_BASE . "localproduto");
         }
 
         $dados["lista"] = LocalProdutoService::lista();
         $dados["produtos"] = Service::lista("tb_produto");
         $dados["locais"] = Service::lista("tb_local_estoque");
-        $dados["tb_local_produto"]   = $tb_local_produto;
+        $dados["DadosLocalProduto"]   = $DadosLocalProduto;
         $dados["view"]      = "LocalProduto/Create";
         $this->load("template", $dados);
     }
 
     public function salvar()
     {
-        $tb_local_produto = new \stdClass();
-        $tb_local_produto->id_local_produto          = $_POST["id_local_produto"];
-        $tb_local_produto->id_produto                = $_POST['id_produto'];
-        $tb_local_produto->id_local_estoque          = $_POST['id_local_estoque'];
-        $tb_local_produto->estoque                   = 0;
-        $em_massa                                 = $_POST['em_massa'];
-        $tipo                                     = $_POST['tipo'];
+        $DadosLocalProduto = new \stdClass();
+        $DadosLocalProduto->id_local_produto = $_POST["id_local_produto"];
+        $DadosLocalProduto->id_produto       = $_POST['id_produto'];
+        $DadosLocalProduto->id_local_estoque = $_POST['id_local_estoque'];
+        $DadosLocalProduto->estoque          = 0;
+        $em_massa                            = $_POST['em_massa'];
+        $tipo                                = $_POST['tipo'];
 
         if ($em_massa == "S") {
-            LocalProdutoService::salvarEmMassa($tb_local_produto->id_local_estoque, $tipo);
+            LocalProdutoService::salvarEmMassa($DadosLocalProduto->id_local_estoque, $tipo);
             $this->redirect(URL_BASE . "localproduto");
         } else {
-            Flash::setForm($tb_local_produto);
-            if (LocalProdutoService::salvar($tb_local_produto, $this->campo, $this->tabela)) {
+            Flash::setForm($DadosLocalProduto);
+            if (LocalProdutoService::salvar($DadosLocalProduto, $this->campo, $this->tabela)) {
                 $this->redirect(URL_BASE . "localproduto");
             } else {
-                if (!$tb_local_produto->id_local_produto) {
+                if (!$DadosLocalProduto->id_local_produto) {
                     $this->redirect(URL_BASE . "localproduto/create");
                 } else {
-                    $this->redirect(URL_BASE . "localproduto/edit/" . $tb_local_produto->id_local_produto);
+                    $this->redirect(URL_BASE . "localproduto/edit/" . $DadosLocalProduto->id_local_produto);
                 }
             }
         }
     }
 
-    public function excluir($id)
+    public function excluir($IdLocalProduto)
     {
-        Service::excluir($this->tabela, $this->campo, $id);
+        Service::excluir($this->tabela, $this->campo, $IdLocalProduto);
         $this->redirect(URL_BASE . "localproduto");
     }
 

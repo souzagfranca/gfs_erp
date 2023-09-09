@@ -31,10 +31,10 @@ class LocalProdutoService
         return $dao->getLocalProdutoDao($id_produto, $id_local_estoque);
     }
 
-    public static function salvar($tb_local_produto, $campo, $tabela)
+    public static function salvar($DadosLocalProduto, $campo, $tabela)
     {
-        $validacao = LocalProdutoValidacao::salvar($tb_local_produto);
-        return Service::salvar($tb_local_produto, $campo, $validacao->listaErros(), $tabela);
+        $validacao = LocalProdutoValidacao::salvar($DadosLocalProduto);
+        return Service::salvar($DadosLocalProduto, $campo, $validacao->listaErros(), $tabela);
     }
 
     public static function salvarEmMassa($id_local_estoque, $tipo)

@@ -4,18 +4,18 @@ namespace app\models\validacao;
 use app\core\Validacao;
 
 class ProdutoValidacao{
-    public static function salvar($tb_produto){
+    public static function salvar($DadosProduto){
         $validacao = new Validacao();
         
-        $validacao->setData("desc_produto", $tb_produto->desc_produto);
-        $validacao->setData("id_categoria", $tb_produto->id_categoria);
-        $validacao->setData("id_unidade", $tb_produto->id_unidade);
-        $validacao->setData("vr_venda", $tb_produto->vr_venda);
-        $validacao->setData("eh_produto", $tb_produto->eh_produto);
-        $validacao->setData("eh_insumo", $tb_produto->eh_insumo);
-        $validacao->setData("eh_promocao", $tb_produto->eh_promocao);
-        $validacao->setData("eh_maisvendido", $tb_produto->eh_maisvendido);
-        $validacao->setData("eh_lancamento", $tb_produto->eh_lancamento);
+        $validacao->setData("desc_produto", $DadosProduto->desc_produto);
+        $validacao->setData("id_categoria", $DadosProduto->id_categoria);
+        $validacao->setData("id_unidade", $DadosProduto->id_unidade);
+        $validacao->setData("vr_venda", $DadosProduto->vr_venda);
+        $validacao->setData("eh_produto", $DadosProduto->eh_produto);
+        $validacao->setData("eh_insumo", $DadosProduto->eh_insumo);
+        $validacao->setData("eh_promocao", $DadosProduto->eh_promocao);
+        $validacao->setData("eh_maisvendido", $DadosProduto->eh_maisvendido);
+        $validacao->setData("eh_lancamento", $DadosProduto->eh_lancamento);
         
         //fazendo a validação
         $validacao->getData("desc_produto")->isVazio();
